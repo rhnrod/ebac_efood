@@ -1,9 +1,12 @@
+import Hero from "./components/Hero"
+import { GlobalCSS } from "./styles"
 
 function App() {
 
   return (
     <div>
-      Olá, efood
+      <GlobalCSS />
+      <Hero />
     </div>
   )
 }
