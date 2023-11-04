@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalCSS = createGlobalStyle`
   * {
@@ -10,3 +10,7 @@ export const GlobalCSS = createGlobalStyle`
     text-decoration: none;
   }
 `
+
+export const cores = {
+  primary: '#E66767'
+}

@@ -1,8 +1,7 @@
-import Hero from "./components/Hero"
-import { GlobalCSS } from "./styles"
+import Hero from './components/Hero'
+import { GlobalCSS } from './styles'
 
 function App() {
-
   return (
     <div>
       <GlobalCSS />
