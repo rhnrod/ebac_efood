@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import background from '../../assets/images/background.png'
-import { cores } from '../../styles'
+import { Logo, cores } from '../../styles'
 
 export const HeroContainer = styled.header`
   display: flex;
@@ -14,7 +14,7 @@ export const HeroContainer = styled.header`
   width: 100%;
   background-image: url(${background});
 
-  img {
+  ${Logo} {
     margin-top: 24px;
   }
 `
