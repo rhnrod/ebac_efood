@@ -1,44 +1,23 @@
 import MenuCard from '../../components/MenuCard'
+import Card from '../../models/Card'
 import { MenuContainer } from './styles'
 
-const MenuList = () => (
+export type Props = {
+  cards: Card[]
+}
+
+const MenuList = ({ cards }: Props) => (
   <MenuContainer>
-    <MenuCard
-      image="sushi"
-      title="Hioki Sushi"
-      description="Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!"
-      note={4.9}
-    ></MenuCard>
-    <MenuCard
-      image="sushi"
-      title="Hioki Sushi"
-      description="Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!"
-      note={4.9}
-    ></MenuCard>
-    <MenuCard
-      image="sushi"
-      title="Hioki Sushi"
-      description="Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!"
-      note={4.9}
-    ></MenuCard>
-    <MenuCard
-      image="sushi"
-      title="Hioki Sushi"
-      description="Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!"
-      note={4.9}
-    ></MenuCard>
-    <MenuCard
-      image="sushi"
-      title="Hioki Sushi"
-      description="Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!"
-      note={4.9}
-    ></MenuCard>
-    <MenuCard
-      image="sushi"
-      title="Hioki Sushi"
-      description="Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!"
-      note={4.9}
-    ></MenuCard>
+    {cards.map((card) => (
+      <MenuCard
+        key={card.id}
+        image={card.image}
+        title={card.title}
+        description={card.description}
+        note={card.note}
+        infos={card.infos}
+      ></MenuCard>
+    ))}
   </MenuContainer>
 )
 

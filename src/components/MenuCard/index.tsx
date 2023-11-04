@@ -6,23 +6,24 @@ import {
   NoteContainer,
   TitleContainer
 } from './styles'
-import sushi from '../../assets/images/sushi.png'
-// import massa from '../../assets/images/massa.png'
+
 import estrela from '../../assets/images/estrela.svg'
 import Tag from '../Tag'
 
 type Props = {
-  image?: 'sushi' | 'massa'
+  image?: string
   title: string
   note: number
   description: string
+  infos: string[]
 }
-const MenuCard = ({ title, note, description }: Props) => (
+const MenuCard = ({ title, image, note, description, infos }: Props) => (
   <CardContainer>
-    <img src={sushi} alt={title} />
+    <img src={image} alt={title} />
     <DestaqueContainer>
-      <Tag>Destaque da semana</Tag>
-      <Tag>Japonesa</Tag>
+      {infos.map((info) => (
+        <Tag>{info}</Tag>
+      ))}
     </DestaqueContainer>
     <InfoContainer>
       <TitleContainer>
