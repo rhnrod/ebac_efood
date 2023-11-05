@@ -33,7 +33,7 @@ export const TextContainer = styled.div`
 `
 
 export const ContainerInfo = styled.div`
-  width: 900px;
+  width: 1024px;
   height: 100%;
   margin: 0 auto;
   display: flex;
