@@ -4,6 +4,7 @@ import Card from '../../models/Card'
 
 import sushi from '../../assets/images/sushi.png'
 import massa from '../../assets/images/massa.png'
+import Footer from '../../components/Footer'
 
 const restaurantes: Card[] = [
   {
@@ -23,6 +24,42 @@ const restaurantes: Card[] = [
       'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
     note: 4.6,
     infos: ['Italiana']
+  },
+  {
+    id: 3,
+    image: massa,
+    title: 'La Dolce Vita Trattoria',
+    description:
+      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
+    note: 4.6,
+    infos: ['Italiana']
+  },
+  {
+    id: 4,
+    image: massa,
+    title: 'La Dolce Vita Trattoria',
+    description:
+      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
+    note: 4.6,
+    infos: ['Italiana']
+  },
+  {
+    id: 5,
+    image: massa,
+    title: 'La Dolce Vita Trattoria',
+    description:
+      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
+    note: 4.6,
+    infos: ['Italiana']
+  },
+  {
+    id: 6,
+    image: massa,
+    title: 'La Dolce Vita Trattoria',
+    description:
+      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
+    note: 4.6,
+    infos: ['Italiana']
   }
 ]
 
@@ -30,6 +67,7 @@ const Home = () => (
   <>
     <Hero />
     <MenuList cards={restaurantes} />
+    <Footer />
   </>
 )
 
