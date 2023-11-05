@@ -7,13 +7,16 @@ import {
   TextContainer
 } from './styles'
 import logo from '../../assets/images/logo.svg'
+import { Link } from 'react-router-dom'
 
 const HeroPerfil = () => (
   <>
     <HeroHeaderContainer>
       <TextContainer>
         <p>Restaurantes</p>
-        <Logo src={logo} />
+        <Link to="/">
+          <Logo src={logo} alt="logo" />
+        </Link>
         <p>0 produto(s) no carrinho</p>
       </TextContainer>
     </HeroHeaderContainer>

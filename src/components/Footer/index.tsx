@@ -5,11 +5,14 @@ import logo from '../../assets/images/logo.svg'
 import instagram from '../../assets/images/SocialMedia_Instagram.svg'
 import facebook from '../../assets/images/SocialMedia_Facebook.svg'
 import twitter from '../../assets/images/SocialMedia_Twitter.svg'
+import { Link } from 'react-router-dom'
 
 const Footer = () => (
   <FooterContainer>
     <div>
-      <Logo src={logo} />
+      <Link to="/">
+        <Logo src={logo} alt="logo" />
+      </Link>
     </div>
     <SocialMediaContainer>
       <img src={instagram} alt="Instagram" />
