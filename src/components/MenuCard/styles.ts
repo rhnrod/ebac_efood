@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import { TagContainer } from '../Tag/styles'
 
 export const CardContainer = styled.div`
   width: 100%;
+  height: 398px;
   background-color: #fff;
   color: ${cores.primary};
   position: relative;
@@ -22,6 +24,14 @@ export const DestaqueContainer = styled.div`
 
 export const InfoContainer = styled.div`
   padding: 8px;
+
+  ${TagContainer} {
+    position: absolute;
+    cursor: pointer;
+    display: block;
+    left: 8px;
+    bottom: 8px;
+  }
 `
 
 export const TitleContainer = styled.div`
@@ -30,7 +40,7 @@ export const TitleContainer = styled.div`
 `
 
 export const Description = styled.p`
-  margin: 16px 0;
+  margin-top: 16px;
   font-size: 14px;
   line-height: 22px;
 `

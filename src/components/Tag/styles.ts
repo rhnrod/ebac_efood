@@ -11,4 +11,8 @@ export const TagContainer = styled.div<Props>`
   margin-right: 8px;
   font-weight: bold;
   display: inline-block;
+
+  a {
+    color: ${cores.secondary};
+  }
 `

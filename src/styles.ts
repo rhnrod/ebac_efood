@@ -28,5 +28,5 @@ export const Logo = styled.img`
 export const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
-  padding: 80px;
+  padding: 80px 0;
 `

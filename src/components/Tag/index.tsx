@@ -2,7 +2,7 @@ import { TagContainer } from './styles'
 
 export type Props = {
   size?: 'small' | 'big'
-  children: string
+  children: JSX.Element | string
 }
 
 const Tag = ({ children, size = 'small' }: Props) => (

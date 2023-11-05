@@ -9,6 +9,7 @@ import {
 
 import estrela from '../../assets/images/estrela.svg'
 import Tag from '../Tag'
+import { Link } from 'react-router-dom'
 
 type Props = {
   image?: string
@@ -34,7 +35,9 @@ const MenuCard = ({ title, image, note, description, infos }: Props) => (
         </NoteContainer>
       </TitleContainer>
       <Description>{description}</Description>
-      <Tag size="big">Saiba mais</Tag>
+      <Tag size="big">
+        <Link to="perfil">Saiba mais</Link>
+      </Tag>
     </InfoContainer>
   </CardContainer>
 )
