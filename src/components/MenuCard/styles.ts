@@ -26,6 +26,19 @@ export const DestaqueContainer = styled.div`
   top: 8px;
   right: 8px;
   z-index: 1;
+  height: 26px;
+  font-size: 12px;
+  text-align: center;
+
+  ${TagContainer} {
+    &:first-child {
+      min-width: 121px;
+    }
+
+    &:last-child {
+      min-width: 61px;
+    }
+  }
 `
 
 export const InfoContainer = styled.div`

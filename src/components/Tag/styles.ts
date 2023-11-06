@@ -7,10 +7,11 @@ export const TagContainer = styled.div<Props>`
   color: ${cores.secondary};
   font-size: ${(props) => (props.size === 'big' ? '14px' : '12px')};
   line-height: ${(props) => (props.size === 'big' ? '16px' : '14px')};
-  padding: 4px 6px;
+  padding: 6px 4px;
   margin-right: 8px;
   font-weight: bold;
   display: inline-block;
+  align-items: center;
 
   a {
     color: ${cores.secondary};

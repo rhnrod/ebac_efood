@@ -18,7 +18,9 @@ export const Card = styled.div`
   }
   div {
     text-align: center;
-    font-size: 16px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16.41px;
     height: 24px;
     width: 100%;
 
