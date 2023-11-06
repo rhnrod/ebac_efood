@@ -20,12 +20,14 @@ type Props = {
 }
 const MenuCard = ({ title, image, note, description, infos }: Props) => (
   <CardContainer>
-    <img src={image} alt={title} />
     <DestaqueContainer>
       {infos.map((info) => (
         <Tag>{info}</Tag>
       ))}
     </DestaqueContainer>
+    <div>
+      <img src={image} alt={title} />
+    </div>
     <InfoContainer>
       <TitleContainer>
         <h3>{title}</h3>
