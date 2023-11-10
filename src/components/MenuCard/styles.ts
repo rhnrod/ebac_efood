@@ -13,6 +13,7 @@ export const CardContainer = styled.div`
 
   img:first-child {
     position: absolute;
+    object-fit: cover;
     width: 472px;
     height: 217px;
     left: -1px;

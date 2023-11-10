@@ -1,24 +1,46 @@
+import { useEffect, useState } from 'react'
 import MenuCard from '../../components/MenuCard'
-import Card from '../../models/Card'
-import { MenuContainer } from './styles'
+import { Loading, MenuContainer } from './styles'
 
-export type Props = {
-  cards: Card[]
+export type Restaurants = {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
 }
 
-const MenuList = ({ cards }: Props) => (
-  <MenuContainer>
-    {cards.map((card) => (
-      <MenuCard
-        key={card.id}
-        image={card.image}
-        title={card.title}
-        description={card.description}
-        note={card.note}
-        infos={card.infos}
-      ></MenuCard>
-    ))}
-  </MenuContainer>
-)
+const MenuList = () => {
+  const [restaurants, setRestaurants] = useState<Restaurants[]>()
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => setRestaurants(res))
+  }, [])
+
+  if (!restaurants) {
+    return <Loading>Carregando...</Loading>
+  }
+
+  return (
+    <MenuContainer>
+      {restaurants.map((restaurant) => (
+        <MenuCard
+          key={restaurant.id}
+          id={restaurant.id}
+          image={restaurant.capa}
+          title={restaurant.titulo}
+          description={restaurant.descricao}
+          note={restaurant.avaliacao}
+          emphasis={restaurant.destacado}
+          category={restaurant.tipo}
+        ></MenuCard>
+      ))}
+    </MenuContainer>
+  )
+}
 
 export default MenuList
