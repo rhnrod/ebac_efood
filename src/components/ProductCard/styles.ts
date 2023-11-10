@@ -12,6 +12,12 @@ export const Card = styled.div`
   flex-direction: column;
   gap: 8px;
 
+  img {
+    width: 304px;
+    height: 167px;
+    object-fit: cover;
+  }
+
   p {
     font-size: 14px;
     line-height: 22px;

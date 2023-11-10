@@ -1,81 +1,79 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import ProductCard from '../../components/ProductCard'
 import Tag from '../../components/Tag'
 
 import { Modal as ModalStyle, ModalContainer, ModalDescription } from './styles'
 import { ListContainer, ProductContainer } from './styles'
+import { Loading } from '../MenuList/styles'
 
-import pizza from '../../assets/images/pizza.png'
+import { Restaurants } from '../MenuList'
+import { getDescription } from '../../components/MenuCard'
 import fechar from '../../assets/images/fechar.svg'
 
-const products = [
-  {
-    id: 1,
-    image: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 2,
-    image: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 3,
-    image: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 4,
-    image: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 5,
-    image: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  },
-  {
-    id: 6,
-    image: pizza,
-    title: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-  }
-]
+type Modal = {
+  description: string
+  name: string
+  portions: string
+  image: string
+  price: string
+}
 
 const ProductList = () => {
+  const { id } = useParams()
   const [isOpen, setIsOpen] = useState(false)
-  const [modalUrl, setModalUrl] = useState(pizza)
+  const [modal, setModal] = useState<Modal>({
+    description: '',
+    name: '',
+    portions: '',
+    image: '',
+    price: '0'
+  })
+
+  const [products, setProducts] = useState<Restaurants>()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setProducts(res))
+  }, [id])
+
+  if (!products) {
+    return <Loading>Carregando...</Loading>
+  }
 
   const closeModal = () => {
     setIsOpen(false)
+  }
+
+  const priceAdjust = (price = 0) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(price)
   }
 
   return (
     <>
       <ProductContainer>
         <ListContainer>
-          {products.map((product) => (
+          {products.cardapio.map((product) => (
             <ProductCard
               key={product.id}
               id={product.id}
-              image={product.image}
-              title={product.title}
-              description={product.description}
+              image={product.foto}
+              title={product.nome}
+              description={getDescription(product.descricao, 150) as string}
               click={() => {
                 setIsOpen(true)
-                setModalUrl(product.image)
+                setModal({
+                  description: `${product.descricao}`,
+                  name: `${product.nome}`,
+                  portions: `${product.porcao}`,
+                  image: `${product.foto}`,
+                  price: priceAdjust(Number(`${product.preco}`))
+                })
               }}
             />
           ))}
@@ -84,27 +82,18 @@ const ProductList = () => {
       <ModalStyle className={isOpen ? 'visible' : ''}>
         <ModalContainer className={isOpen ? 'visible' : ''}>
           <div>
-            <img src={modalUrl} alt="pizza marguerita" />
+            <img src={modal.image} alt="pizza marguerita" />
           </div>
           <ModalDescription>
-            <h3>Pizza Marguerita</h3>
+            <h3>{modal.name}</h3>
             <img src={fechar} alt="botão fechar" onClick={closeModal} />
             <div>
-              <p>
-                A pizza Margherita é uma pizza clássica da culinária italiana,
-                reconhecida por sua simplicidade e sabor inigualável. Ela é
-                feita com uma base de massa fina e crocante, coberta com molho
-                de tomate fresco, queijo mussarela de alta qualidade, manjericão
-                fresco e azeite de oliva extra-virgem. A combinação de sabores é
-                perfeita, com o molho de tomate suculento e ligeiramente ácido,
-                o queijo derretido e cremoso e as folhas de manjericão frescas,
-                que adicionam um toque de sabor herbáceo. É uma pizza simples,
-                mas deliciosa, que agrada a todos os paladares e é uma ótima
-                opção para qualquer ocasião.
-              </p>
-              <p>Serve: de 2 a 3 pessoas</p>
+              <p>{modal.description}</p>
+              <p>Serve: {modal.portions}</p>
             </div>
-            <Tag size="small">Adicionar ao carrinho - R$60,90</Tag>
+            <Tag size="small">
+              <p>Adicionar ao carrinho - {modal.price}</p>
+            </Tag>
           </ModalDescription>
         </ModalContainer>
         <div className={isOpen ? 'overlay' : ''} onClick={closeModal}></div>

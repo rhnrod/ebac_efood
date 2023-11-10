@@ -20,6 +20,14 @@ type Props = {
   emphasis: boolean
   id: number
 }
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const getDescription = (desc: string, count: number) => {
+  if (desc.length > count) {
+    return desc.slice(0, count - 3) + '...'
+  }
+}
+
 const MenuCard = ({
   title,
   image,
@@ -29,12 +37,6 @@ const MenuCard = ({
   emphasis,
   id
 }: Props) => {
-  const getDescription = (desc: string) => {
-    if (desc.length > 240) {
-      return desc.slice(0, 237) + '...'
-    }
-  }
-
   return (
     <CardContainer>
       <DestaqueContainer>
@@ -52,7 +54,7 @@ const MenuCard = ({
             <img src={estrela} />
           </NoteContainer>
         </TitleContainer>
-        <Description>{getDescription(description)}</Description>
+        <Description>{getDescription(description, 240)}</Description>
         <Tag size="big">
           <Link to={`perfil/${id}`}>Saiba mais</Link>
         </Tag>

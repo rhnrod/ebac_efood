@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 import { HeroContainer } from '../Hero/styles'
 import { Logo, cores } from '../../styles'
-import trattoria from '../../assets/images/trattoria.png'
+
+type Props = {
+  capa: string
+}
 
 export const HeroHeaderContainer = styled(HeroContainer)`
   height: 186px;
@@ -10,11 +13,13 @@ export const HeroHeaderContainer = styled(HeroContainer)`
   color: ${cores.primary};
 `
 
-export const HeroImage = styled.div`
+export const HeroImage = styled.div<Props>`
   height: 280px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(${trattoria});
+    url(${(props) => props.capa});
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 `
 
 export const TextContainer = styled.div`
