@@ -42,8 +42,8 @@ export const DestaqueContainer = styled.div`
 `
 
 export const InfoContainer = styled.div`
-  padding: 8px;
   padding-top: 0;
+  padding-right: 8px;
   border-top: transparent;
   position: absolute;
 
@@ -52,7 +52,12 @@ export const InfoContainer = styled.div`
 
   ${TagContainer} {
     cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
     margin-top: 8px;
+    min-width: 82px;
+    max-height: 24px;
+    margin-right: 0;
   }
 `
 
