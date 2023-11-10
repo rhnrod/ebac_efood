@@ -16,6 +16,7 @@ export const Card = styled.div`
     font-size: 14px;
     line-height: 22px;
   }
+
   div {
     text-align: center;
     font-weight: bold;
@@ -23,10 +24,13 @@ export const Card = styled.div`
     line-height: 16.41px;
     height: 24px;
     width: 100%;
+    cursor: pointer;
 
     ${TagContainer} {
       background-color: ${cores.secondary};
       color: ${cores.primary};
+      display: flex;
+      justify-content: center;
     }
   }
 `
