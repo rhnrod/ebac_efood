@@ -23,12 +23,13 @@ export const CardContainer = styled.div`
 export const DestaqueContainer = styled.div`
   display: flex;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 16px;
+  right: 16px;
   z-index: 1;
   height: 26px;
   font-size: 12px;
   text-align: center;
+  gap: 8px;
 
   ${TagContainer} {
     &:first-child {

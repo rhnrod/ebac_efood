@@ -1,6 +1,5 @@
 import ProductCard from '../../components/ProductCard'
-import { Container } from '../../styles'
-import { ListContainer } from './styles'
+import { ListContainer, ProductContainer } from './styles'
 import pizza from '../../assets/images/pizza.png'
 
 const products = [
@@ -49,7 +48,7 @@ const products = [
 ]
 
 const ProductList = () => (
-  <Container>
+  <ProductContainer>
     <ListContainer>
       {products.map((product) => (
         <ProductCard
@@ -61,7 +60,7 @@ const ProductList = () => (
         />
       ))}
     </ListContainer>
-  </Container>
+  </ProductContainer>
 )
 
 export default ProductList
