@@ -1,5 +1,6 @@
 import Footer from '../../components/Footer'
 import HeroPerfil from '../../components/HeroPerfil'
+import Cart from '../../containers/Cart'
 import ProductList from '../../containers/ProductList'
 
 const Perfil = () => (
@@ -7,6 +8,7 @@ const Perfil = () => (
     <HeroPerfil />
     <ProductList />
     <Footer />
+    <Cart />
   </>
 )
 
