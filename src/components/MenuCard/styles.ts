@@ -10,6 +10,7 @@ export const CardContainer = styled.div`
   position: relative;
   border: 1px solid ${cores.primary};
   border-top: transparent;
+  position: relative;
 
   img:first-child {
     position: absolute;
@@ -48,6 +49,7 @@ export const InfoContainer = styled.div`
   padding-right: 8px;
   border-top: transparent;
   position: absolute;
+  height: calc(181px - 16px);
 
   left: 8px;
   bottom: 8px;
@@ -60,6 +62,8 @@ export const InfoContainer = styled.div`
     min-width: 82px;
     max-height: 24px;
     margin-right: 0;
+    bottom: 0px;
+    position: absolute;
   }
 `
 
