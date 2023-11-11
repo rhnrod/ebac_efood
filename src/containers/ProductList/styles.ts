@@ -50,7 +50,7 @@ export const ModalContainer = styled.div`
   width: 1024px;
   height: 344px;
   background-color: ${cores.primary};
-  color: ${cores.secondary};
+  color: ${cores.white};
   padding: 32px;
   gap: 24px;
   font-weight: 14px;
@@ -68,6 +68,7 @@ export const ModalContainer = styled.div`
 
   h3 {
     font-size: 18px;
+    line-height: 21.09px;
     font-weight: 900;
   }
 
@@ -79,6 +80,7 @@ export const ModalContainer = styled.div`
     padding: 4px 7px;
     text-align: center;
     font-weight: bold;
+    font-size: 14px;
     line-height: 16px;
   }
 `
@@ -87,6 +89,8 @@ export const ModalDescription = styled.div`
   div:nth-child(3) {
     margin: 16px 0;
     height: 176px;
+    font-size: 14px;
+    line-height: 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
