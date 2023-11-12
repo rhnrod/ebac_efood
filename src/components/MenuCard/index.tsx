@@ -55,9 +55,9 @@ const MenuCard = ({
           </NoteContainer>
         </TitleContainer>
         <Description>{getDescription(description, 240)}</Description>
-        <Tag size="big">
-          <Link to={`perfil/${id}`}>Saiba mais</Link>
-        </Tag>
+        <Link to={`perfil/${id}`}>
+          <Tag size="big">Saiba mais</Tag>
+        </Link>
       </InfoContainer>
     </CardContainer>
   )
