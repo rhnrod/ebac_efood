@@ -72,10 +72,8 @@ const ProductCard = ({
               <p>{descricao}</p>
               <p>Serve: {porcao}</p>
             </div>
-            <Tag size="small">
-              <p onClick={addToCart}>
-                Adicionar ao carrinho - {priceAdjust(preco)}
-              </p>
+            <Tag size="small" onClick={addToCart}>
+              <p>Adicionar ao carrinho - {priceAdjust(preco)}</p>
             </Tag>
           </ModalDescription>
         </ModalContainer>
