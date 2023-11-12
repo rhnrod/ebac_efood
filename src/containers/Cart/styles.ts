@@ -45,6 +45,10 @@ export const Sidebar = styled.aside`
     line-height: 16px;
     font-size: 14px;
     cursor: pointer;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `
 
