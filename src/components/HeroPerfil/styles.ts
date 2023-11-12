@@ -31,6 +31,7 @@ export const TextContainer = styled.div`
 
   p {
     width: 200px;
+    color: ${cores.primary};
   }
   ${Logo} {
     margin-top: 0px;

@@ -12,13 +12,13 @@ import { Link, useParams } from 'react-router-dom'
 import { Loading } from '../../containers/MenuList/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { openCart } from '../../store/reducers/cart'
-import { useGetProductsQuery } from '../../services/api'
+import { useGetRestaurantQuery } from '../../services/api'
 import { RootReducer } from '../../store'
 
 const HeroPerfil = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
-  const { data: restaurant } = useGetProductsQuery(id!)
+  const { data: restaurant } = useGetRestaurantQuery(id!)
   const { items } = useSelector((state: RootReducer) => state.cart)
 
   const open = () => {
@@ -33,7 +33,9 @@ const HeroPerfil = () => {
     <>
       <HeroHeaderContainer>
         <TextContainer>
-          <p>Restaurantes</p>
+          <Link to="/">
+            <p>Restaurantes</p>
+          </Link>
           <Link to="/">
             <Logo src={logo} alt="logo" />
           </Link>
@@ -44,7 +46,9 @@ const HeroPerfil = () => {
       </HeroHeaderContainer>
       <HeroImage capa={restaurant.capa}>
         <ContainerInfo>
-          <CategoriaInfo>{restaurant.tipo}</CategoriaInfo>
+          <CategoriaInfo>
+            {restaurant.tipo.charAt(0).toUpperCase() + restaurant.tipo.slice(1)}
+          </CategoriaInfo>
           <h3>{restaurant.titulo}</h3>
         </ContainerInfo>
       </HeroImage>

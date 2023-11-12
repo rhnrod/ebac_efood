@@ -22,7 +22,11 @@ const cartSlice = createSlice({
       state.isOpen = false
     },
     add: (state, action: PayloadAction<Menu>) => {
-      state.items.push(action.payload)
+      if (state.items.find((item) => item.id === action.payload.id)) {
+        alert('Este prato já foi adicionado ao carrinho.')
+      } else {
+        state.items.push(action.payload)
+      }
     },
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)

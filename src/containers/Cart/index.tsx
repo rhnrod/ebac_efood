@@ -29,6 +29,12 @@ const Cart = () => {
     dispatch(remove(id))
   }
 
+  const getTotalPrice = () => {
+    return items.reduce((acc, value) => {
+      return acc + value.preco
+    }, 0)
+  }
+
   return (
     <Container className={isOpen ? 'is-open' : ''}>
       <div className="overlay" onClick={close}></div>
@@ -51,7 +57,7 @@ const Cart = () => {
         </CartContainer>
         <Values>
           <p>Valor total</p>
-          <p>R$182,70</p>
+          <p>{priceAdjust(getTotalPrice())}</p>
         </Values>
         <Tag> Continuar com a entrega</Tag>
       </Sidebar>
