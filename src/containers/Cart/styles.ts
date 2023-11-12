@@ -52,7 +52,12 @@ export const Sidebar = styled.aside`
   }
 `
 
-export const CartContainer = styled.ul``
+export const CartContainer = styled.ul`
+  max-height: 680px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+`
 
 export const CartItem = styled.li`
   display: flex;
