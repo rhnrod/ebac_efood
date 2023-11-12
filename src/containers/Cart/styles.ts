@@ -89,15 +89,14 @@ export const CartItem = styled.li`
 
 export const Button = styled.button`
   position: absolute;
+  display: flex;
   bottom: 8px;
   right: 8px;
   border: none;
+  background-color: transparent;
 
   img {
     cursor: pointer;
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
     width: 16px;
     height: 16px;
     z-index: 1;
