@@ -1,5 +1,6 @@
 import { Logo } from '../../styles'
 import {
+  CartInfo,
   CategoriaInfo,
   ContainerInfo,
   HeroHeaderContainer,
@@ -8,20 +9,21 @@ import {
 } from './styles'
 import logo from '../../assets/images/logo.svg'
 import { Link, useParams } from 'react-router-dom'
-import { Restaurants } from '../../containers/MenuList'
-import { useEffect, useState } from 'react'
 import { Loading } from '../../containers/MenuList/styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { openCart } from '../../store/reducers/cart'
+import { useGetProductsQuery } from '../../services/api'
+import { RootReducer } from '../../store'
 
 const HeroPerfil = () => {
   const { id } = useParams()
+  const dispatch = useDispatch()
+  const { data: restaurant } = useGetProductsQuery(id!)
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
-  const [restaurant, setRestaurant] = useState<Restaurants>()
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurant(res))
-  }, [id])
+  const open = () => {
+    dispatch(openCart())
+  }
 
   if (!restaurant) {
     return <Loading>Carregando...</Loading>
@@ -35,7 +37,9 @@ const HeroPerfil = () => {
           <Link to="/">
             <Logo src={logo} alt="logo" />
           </Link>
-          <p>0 produto(s) no carrinho</p>
+          <CartInfo onClick={open}>
+            {items.length} produto(s) no carrinho
+          </CartInfo>
         </TextContainer>
       </HeroHeaderContainer>
       <HeroImage capa={restaurant.capa}>

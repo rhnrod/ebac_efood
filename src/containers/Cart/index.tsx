@@ -1,44 +1,61 @@
-import pizza from '../../assets/images/pizza.png'
+import { useDispatch, useSelector } from 'react-redux'
 import remover from '../../assets/images/remover.svg'
 import Tag from '../../components/Tag'
-import { CartContainer, Sidebar, InfoContainer, Values } from './styles'
+import {
+  Container,
+  Sidebar,
+  CartContainer,
+  Values,
+  CartItem,
+  Button
+} from './styles'
+import { RootReducer } from '../../store'
+import { closeCart, remove } from '../../store/reducers/cart'
+import { priceAdjust } from '../../components/ProductCard'
 
 const Cart = () => {
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const dispatch = useDispatch()
+
+  const close = () => {
+    dispatch(closeCart())
+  }
+
+  const removeFromCart = (id: number) => {
+    if (items.length === 1) {
+      dispatch(closeCart())
+    }
+
+    dispatch(remove(id))
+  }
+
   return (
-    <CartContainer>
-      <div className="overlay"></div>
+    <Container className={isOpen ? 'is-open' : ''}>
+      <div className="overlay" onClick={close}></div>
       <Sidebar>
-        <InfoContainer>
-          <img src={pizza} alt="pizza marguerita" />
-          <div>
-            <h3>Pizza Marguerita</h3>
-            <p>R$60,90</p>
-          </div>
-          <img src={remover} alt="botão remover" />
-        </InfoContainer>
-        <InfoContainer>
-          <img src={pizza} alt="pizza marguerita" />
-          <div>
-            <h3>Pizza Marguerita</h3>
-            <p>R$60,90</p>
-          </div>
-          <img src={remover} alt="botão remover" />
-        </InfoContainer>
-        <InfoContainer>
-          <img src={pizza} alt="pizza marguerita" />
-          <div>
-            <h3>Pizza Marguerita</h3>
-            <p>R$60,90</p>
-          </div>
-          <img src={remover} alt="botão remover" />
-        </InfoContainer>
+        <CartContainer>
+          {items.map((item) => {
+            return (
+              <CartItem>
+                <img src={item.foto} alt={item.nome} />
+                <div>
+                  <h3>{item.nome}</h3>
+                  <p>{priceAdjust(item.preco)}</p>
+                </div>
+                <Button onClick={() => removeFromCart(item.id)}>
+                  <img src={remover} alt="botão remover" />
+                </Button>
+              </CartItem>
+            )
+          })}
+        </CartContainer>
         <Values>
           <p>Valor total</p>
           <p>R$182,70</p>
         </Values>
         <Tag> Continuar com a entrega</Tag>
       </Sidebar>
-    </CartContainer>
+    </Container>
   )
 }
 

@@ -59,3 +59,7 @@ export const CategoriaInfo = styled.p`
   padding-top: 24px;
   color: rgba(255, 255, 255, 0.5);
 `
+
+export const CartInfo = styled.p`
+  cursor: pointer;
+`

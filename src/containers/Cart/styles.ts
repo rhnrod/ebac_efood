@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../../components/Tag/styles'
 
-export const CartContainer = styled.div`
+export const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@ export const CartContainer = styled.div`
   display: none;
   justify-content: flex-end;
 
-  &.is-visible {
+  &.is-open {
     display: flex;
   }
 
@@ -44,10 +44,13 @@ export const Sidebar = styled.aside`
     font-weight: bold;
     line-height: 16px;
     font-size: 14px;
+    cursor: pointer;
   }
 `
 
-export const InfoContainer = styled.div`
+export const CartContainer = styled.ul``
+
+export const CartItem = styled.li`
   display: flex;
   position: relative;
   background-color: ${cores.secondary};
@@ -81,14 +84,23 @@ export const InfoContainer = styled.div`
     width: 80px;
     height: 80px;
     object-fit: cover;
+  }
+`
 
-    &:last-child {
-      width: 16px;
-      height: 16px;
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-    }
+export const Button = styled.button`
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  border: none;
+
+  img {
+    cursor: pointer;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    z-index: 1;
   }
 `
 
