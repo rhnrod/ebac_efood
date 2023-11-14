@@ -40,7 +40,8 @@ const HeroPerfil = () => {
             <Logo src={logo} alt="logo" />
           </Link>
           <CartInfo onClick={open}>
-            {items.length} produto(s) no carrinho
+            {items.length} {items.length === 1 ? 'produto' : 'produtos'} no
+            carrinho
           </CartInfo>
         </TextContainer>
       </HeroHeaderContainer>
