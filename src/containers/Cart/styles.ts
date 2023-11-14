@@ -2,6 +2,14 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../../components/Tag/styles'
 
+type RowProps = {
+  small?: boolean
+}
+
+type InputProps = {
+  maxWidth?: string
+}
+
 export const Container = styled.div`
   position: fixed;
   top: 0;
@@ -28,6 +36,26 @@ export const Container = styled.div`
     content: '';
   }
 `
+export const PaymentContainer = styled.div`
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+`
+
+export const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 286px;
+  margin-top: 16px;
+  justify-content: space-between;
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+`
 
 export const Sidebar = styled.aside`
   width: 360px;
@@ -50,6 +78,57 @@ export const Sidebar = styled.aside`
     align-items: center;
     justify-content: center;
   }
+
+  form {
+    margin-top: 32px;
+
+    h3 {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 18.75px;
+      margin-bottom: 16px;
+    }
+  }
+
+  ${TagContainer} {
+    margin-bottom: 8px;
+  }
+`
+
+export const TagGroup = styled.div`
+  margin-top: 24px;
+`
+
+export const InputGroup = styled.div<InputProps>`
+  margin-bottom: 8px;
+  max-width: ${(props) => props.maxWidth ?? 'auto'};
+
+  label,
+  input {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16.41px;
+  }
+
+  input {
+    width: 100%;
+    color: ${cores.black};
+    background-color: ${cores.secondary};
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid ${cores.secondary};
+    margin-top: 8px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+`
+
+export const Row = styled.div<RowProps>`
+  display: flex;
+  flex: auto;
+  gap: ${(props) => (props.small ? '30px' : '34px')};
 `
 
 export const CartContainer = styled.ul`
