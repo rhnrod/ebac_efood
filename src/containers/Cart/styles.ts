@@ -10,6 +10,10 @@ type InputProps = {
   maxWidth?: string
 }
 
+type TextContainerProps = {
+  textAlign?: string
+}
+
 export const Container = styled.div`
   position: fixed;
   top: 0;
@@ -44,12 +48,13 @@ export const PaymentContainer = styled.div`
   }
 `
 
-export const TextContainer = styled.div`
+export const TextContainer = styled.div<TextContainerProps>`
   display: flex;
   flex-direction: column;
   height: 286px;
   margin-top: 16px;
   justify-content: space-between;
+  text-align: ${(props) => props.textAlign ?? 'left'};
 
   p {
     font-size: 14px;

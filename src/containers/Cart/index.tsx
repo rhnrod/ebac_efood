@@ -15,7 +15,7 @@ import {
   TextContainer
 } from './styles'
 import { RootReducer } from '../../store'
-import { closeCart, remove } from '../../store/reducers/cart'
+import { clear, closeCart, remove } from '../../store/reducers/cart'
 import { priceAdjust } from '../../components/ProductCard'
 import { useState } from 'react'
 
@@ -47,29 +47,40 @@ const Cart = () => {
       <div className="overlay" onClick={close}></div>
       <Sidebar>
         <PaymentContainer className={paymentStep === 'cart' ? 'visible' : ''}>
-          <CartContainer>
-            {items.map((item) => {
-              return (
-                <CartItem>
-                  <img src={item.foto} alt={item.nome} />
-                  <div>
-                    <h3>{item.nome}</h3>
-                    <p>{priceAdjust(item.preco)}</p>
-                  </div>
-                  <Button onClick={() => removeFromCart(item.id)}>
-                    <img src={remover} alt="botão remover" />
-                  </Button>
-                </CartItem>
-              )
-            })}
-          </CartContainer>
-          <Values>
-            <p>Valor total</p>
-            <p>{priceAdjust(getTotalPrice())}</p>
-          </Values>
-          <Tag onClick={() => setPaymentStep('delivery')}>
-            Continuar com a entrega
-          </Tag>
+          {items.length > 0 ? (
+            <>
+              <CartContainer>
+                {items.map((item) => {
+                  return (
+                    <CartItem>
+                      <img src={item.foto} alt={item.nome} />
+                      <div>
+                        <h3>{item.nome}</h3>
+                        <p>{priceAdjust(item.preco)}</p>
+                      </div>
+                      <Button onClick={() => removeFromCart(item.id)}>
+                        <img src={remover} alt="botão remover" />
+                      </Button>
+                    </CartItem>
+                  )
+                })}
+              </CartContainer>
+              <Values>
+                <p>Valor total</p>
+                <p>{priceAdjust(getTotalPrice())}</p>
+              </Values>
+              <Tag onClick={() => setPaymentStep('delivery')}>
+                Continuar com a entrega
+              </Tag>
+            </>
+          ) : (
+            <TextContainer textAlign="center">
+              <p>
+                Seu carrinho está vazio. Adicione pelo menos um pedido para
+                prosseguir.
+              </p>
+            </TextContainer>
+          )}
         </PaymentContainer>
 
         <PaymentContainer
@@ -143,7 +154,12 @@ const Cart = () => {
               </InputGroup>
             </Row>
             <TagGroup>
-              <Tag onClick={() => setPaymentStep('finish')}>
+              <Tag
+                onClick={() => {
+                  setPaymentStep('finish')
+                  dispatch(clear())
+                }}
+              >
                 Finalizar pagamento
               </Tag>
               <Tag onClick={() => setPaymentStep('delivery')}>
@@ -174,7 +190,14 @@ const Cart = () => {
             </p>
           </TextContainer>
           <TagGroup>
-            <Tag onClick={() => setPaymentStep('cart')}>Concluir</Tag>
+            <Tag
+              onClick={() => {
+                setPaymentStep('cart')
+                dispatch(closeCart())
+              }}
+            >
+              Concluir
+            </Tag>
           </TagGroup>
         </PaymentContainer>
       </Sidebar>
