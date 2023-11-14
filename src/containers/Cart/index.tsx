@@ -1,19 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import remover from '../../assets/images/remover.svg'
 import Tag from '../../components/Tag'
-import {
-  Container,
-  Sidebar,
-  CartContainer,
-  Values,
-  CartItem,
-  Button,
-  InputGroup,
-  TagGroup,
-  Row,
-  PaymentContainer,
-  TextContainer
-} from './styles'
+import * as S from './styles'
 import { RootReducer } from '../../store'
 import { clear, closeCart, remove } from '../../store/reducers/cart'
 import { priceAdjust } from '../../components/ProductCard'
@@ -43,117 +31,117 @@ const Cart = () => {
   }
 
   return (
-    <Container className={isOpen ? 'is-open' : ''}>
+    <S.Container className={isOpen ? 'is-open' : ''}>
       <div className="overlay" onClick={close}></div>
-      <Sidebar>
-        <PaymentContainer className={paymentStep === 'cart' ? 'visible' : ''}>
+      <S.Sidebar>
+        <S.PaymentContainer className={paymentStep === 'cart' ? 'visible' : ''}>
           {items.length > 0 ? (
             <>
-              <CartContainer>
+              <S.CartContainer>
                 {items.map((item) => {
                   return (
-                    <CartItem>
+                    <S.CartItem>
                       <img src={item.foto} alt={item.nome} />
                       <div>
                         <h3>{item.nome}</h3>
                         <p>{priceAdjust(item.preco)}</p>
                       </div>
-                      <Button onClick={() => removeFromCart(item.id)}>
+                      <S.Button onClick={() => removeFromCart(item.id)}>
                         <img src={remover} alt="botão remover" />
-                      </Button>
-                    </CartItem>
+                      </S.Button>
+                    </S.CartItem>
                   )
                 })}
-              </CartContainer>
-              <Values>
+              </S.CartContainer>
+              <S.Values>
                 <p>Valor total</p>
                 <p>{priceAdjust(getTotalPrice())}</p>
-              </Values>
+              </S.Values>
               <Tag onClick={() => setPaymentStep('delivery')}>
                 Continuar com a entrega
               </Tag>
             </>
           ) : (
-            <TextContainer textAlign="center">
+            <S.TextContainer textAlign="center">
               <p>
                 Seu carrinho está vazio. Adicione pelo menos um pedido para
                 prosseguir.
               </p>
-            </TextContainer>
+            </S.TextContainer>
           )}
-        </PaymentContainer>
+        </S.PaymentContainer>
 
-        <PaymentContainer
+        <S.PaymentContainer
           className={paymentStep === 'delivery' ? 'visible' : ''}
         >
           <form>
             <h3>Entrega</h3>
-            <InputGroup>
+            <S.InputGroup>
               <label htmlFor="">Quem irá receber</label>
               <input type="text" />
-            </InputGroup>
-            <InputGroup>
+            </S.InputGroup>
+            <S.InputGroup>
               <label htmlFor="">Endereço</label>
               <input type="text" />
-            </InputGroup>
-            <InputGroup>
+            </S.InputGroup>
+            <S.InputGroup>
               <label htmlFor="">Cidade</label>
               <input type="text" />
-            </InputGroup>
-            <Row>
-              <InputGroup>
+            </S.InputGroup>
+            <S.Row>
+              <S.InputGroup>
                 <label htmlFor="">CEP</label>
                 <input type="text" />
-              </InputGroup>
-              <InputGroup>
+              </S.InputGroup>
+              <S.InputGroup>
                 <label htmlFor="">Número</label>
                 <input type="text" />
-              </InputGroup>
-            </Row>
-            <InputGroup>
+              </S.InputGroup>
+            </S.Row>
+            <S.InputGroup>
               <label htmlFor="">Complemento (opcional)</label>
               <input type="text" />
-            </InputGroup>
-            <TagGroup>
+            </S.InputGroup>
+            <S.TagGroup>
               <Tag onClick={() => setPaymentStep('payment')}>
                 Continuar com o pagamento
               </Tag>
               <Tag onClick={() => setPaymentStep('cart')}>
                 Voltar para o carrinho
               </Tag>
-            </TagGroup>
+            </S.TagGroup>
           </form>
-        </PaymentContainer>
-        <PaymentContainer
+        </S.PaymentContainer>
+        <S.PaymentContainer
           className={paymentStep === 'payment' ? 'visible' : ''}
         >
           <form>
             <h3>Pagamento - Valor a pagar {priceAdjust(getTotalPrice())}</h3>
-            <InputGroup>
+            <S.InputGroup>
               <label htmlFor="">Nome no cartão</label>
               <input type="text" />
-            </InputGroup>
-            <Row small>
-              <InputGroup>
+            </S.InputGroup>
+            <S.Row small>
+              <S.InputGroup>
                 <label htmlFor="">Número do cartão</label>
                 <input type="text" />
-              </InputGroup>
-              <InputGroup maxWidth="87px">
+              </S.InputGroup>
+              <S.InputGroup maxWidth="87px">
                 <label htmlFor="">CVV</label>
                 <input type="text" />
-              </InputGroup>
-            </Row>
-            <Row>
-              <InputGroup>
+              </S.InputGroup>
+            </S.Row>
+            <S.Row>
+              <S.InputGroup>
                 <label htmlFor="">Mês de vencimento</label>
                 <input type="text" />
-              </InputGroup>
-              <InputGroup>
+              </S.InputGroup>
+              <S.InputGroup>
                 <label htmlFor="">Ano de vencimento</label>
                 <input type="text" />
-              </InputGroup>
-            </Row>
-            <TagGroup>
+              </S.InputGroup>
+            </S.Row>
+            <S.TagGroup>
               <Tag
                 onClick={() => {
                   setPaymentStep('finish')
@@ -165,12 +153,14 @@ const Cart = () => {
               <Tag onClick={() => setPaymentStep('delivery')}>
                 Voltar para a edição de endereço
               </Tag>
-            </TagGroup>
+            </S.TagGroup>
           </form>
-        </PaymentContainer>
-        <PaymentContainer className={paymentStep === 'finish' ? 'visible' : ''}>
+        </S.PaymentContainer>
+        <S.PaymentContainer
+          className={paymentStep === 'finish' ? 'visible' : ''}
+        >
           <h3>Pedido realizado - #PEDIDO</h3>
-          <TextContainer>
+          <S.TextContainer>
             <p>
               Estamos felizes em informar que seu pedido já está em processo de
               preparação e, em breve, será entregue no endereço fornecido.
@@ -188,8 +178,8 @@ const Cart = () => {
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </p>
-          </TextContainer>
-          <TagGroup>
+          </S.TextContainer>
+          <S.TagGroup>
             <Tag
               onClick={() => {
                 setPaymentStep('cart')
@@ -198,10 +188,10 @@ const Cart = () => {
             >
               Concluir
             </Tag>
-          </TagGroup>
-        </PaymentContainer>
-      </Sidebar>
-    </Container>
+          </S.TagGroup>
+        </S.PaymentContainer>
+      </S.Sidebar>
+    </S.Container>
   )
 }
 
