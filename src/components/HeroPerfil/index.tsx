@@ -1,4 +1,4 @@
-import { Logo } from '../../styles'
+import { Logo, cores } from '../../styles'
 import {
   CartInfo,
   CategoriaInfo,
@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { openCart } from '../../store/reducers/cart'
 import { useGetRestaurantQuery } from '../../services/api'
 import { RootReducer } from '../../store'
+import { MoonLoader } from 'react-spinners'
 
 const HeroPerfil = () => {
   const { id } = useParams()
@@ -26,7 +27,11 @@ const HeroPerfil = () => {
   }
 
   if (!restaurant) {
-    return <Loading>Carregando...</Loading>
+    return (
+      <Loading>
+        <MoonLoader color={cores.primary} size={'60px'} />
+      </Loading>
+    )
   }
 
   return (

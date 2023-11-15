@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Container, breakpoints, cores } from '../../styles'
+import { Container, breakpoints } from '../../styles'
 
 export const MenuContainer = styled(Container)`
   display: grid;
@@ -15,11 +15,10 @@ export const MenuContainer = styled(Container)`
   }
 `
 
-export const Loading = styled.h3`
-  font-size: 48px;
-  color: ${cores.primary};
+export const Loading = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px;
+  width: 100%;
+  height: 360px;
 `

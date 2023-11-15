@@ -5,13 +5,19 @@ import Cart from '../../containers/Cart'
 import ProductList from '../../containers/ProductList'
 import { useGetProductsQuery } from '../../services/api'
 import { Loading } from '../../containers/MenuList/styles'
+import { MoonLoader } from 'react-spinners'
+import { cores } from '../../styles'
 
 const Perfil = () => {
   const { id } = useParams()
   const { data: cardapio } = useGetProductsQuery(id!)
 
   if (!cardapio) {
-    return <Loading>Carregando...</Loading>
+    return (
+      <Loading>
+        <MoonLoader color={cores.primary} size={'60px'} />
+      </Loading>
+    )
   }
 
   return (
