@@ -5,7 +5,8 @@ export const cores = {
   secondary: '#FFEBD9',
   background: '#FFF8F2',
   white: '#fff',
-  black: '#4B4B4B'
+  black: '#4B4B4B',
+  red: '#E92966'
 }
 
 export const GlobalCSS = createGlobalStyle`

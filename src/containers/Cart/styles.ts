@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { TagContainer } from '../../components/Tag/styles'
 
 type RowProps = {
   small?: boolean
@@ -69,21 +68,6 @@ export const Sidebar = styled.aside`
   z-index: 1;
   padding: 32px 8px;
 
-  ${TagContainer} {
-    width: 100%;
-    color: ${cores.primary};
-    background-color: ${cores.secondary};
-    text-align: center;
-    font-weight: bold;
-    line-height: 16px;
-    font-size: 14px;
-    cursor: pointer;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   form {
     margin-top: 32px;
 
@@ -94,10 +78,6 @@ export const Sidebar = styled.aside`
       margin-bottom: 16px;
     }
   }
-
-  ${TagContainer} {
-    margin-bottom: 8px;
-  }
 `
 
 export const TagGroup = styled.div`
@@ -107,6 +87,7 @@ export const TagGroup = styled.div`
 export const InputGroup = styled.div<InputProps>`
   margin-bottom: 8px;
   max-width: ${(props) => props.maxWidth ?? 'auto'};
+  position: relative;
 
   label,
   input {
@@ -126,6 +107,19 @@ export const InputGroup = styled.div<InputProps>`
 
     &:focus {
       outline: none;
+    }
+  }
+
+  small {
+    display: none;
+    position: absolute;
+    right: 4px;
+    top: 26px;
+    color: ${cores.red};
+    font-weight: bold;
+
+    &.error {
+      display: block;
     }
   }
 `
@@ -194,6 +188,23 @@ export const Button = styled.button`
     height: 16px;
     z-index: 1;
   }
+`
+
+export const TagButton = styled.button`
+  width: 100%;
+  border: none;
+  color: ${cores.primary};
+  background-color: ${cores.secondary};
+  text-align: center;
+  font-weight: bold;
+  line-height: 16px;
+  font-size: 14px;
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
 `
 
 export const Values = styled.div`
