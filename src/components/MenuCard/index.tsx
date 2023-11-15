@@ -41,7 +41,7 @@ const MenuCard = ({
     <CardContainer>
       <DestaqueContainer>
         {emphasis && <Tag>Destaque da semana</Tag>}
-        <Tag>{category}</Tag>
+        <Tag>{category.charAt(0).toUpperCase() + category.slice(1)}</Tag>
       </DestaqueContainer>
       <div>
         <img src={image} alt={title} />

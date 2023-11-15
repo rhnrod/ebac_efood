@@ -16,7 +16,6 @@ type Props = {
   descricao: string
   porcao: string
   cardapio: Menu
-  isModal?: boolean
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
