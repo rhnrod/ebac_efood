@@ -9,6 +9,11 @@ export const cores = {
   red: '#E92966'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
+
 export const GlobalCSS = createGlobalStyle`
   * {
     margin: 0;
