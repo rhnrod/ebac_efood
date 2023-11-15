@@ -37,4 +37,12 @@ export const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
   padding: 80px 0;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 80%;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 90%;
+  }
 `

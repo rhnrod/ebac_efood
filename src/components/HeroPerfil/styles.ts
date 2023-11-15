@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { HeroContainer } from '../Hero/styles'
-import { Logo, cores } from '../../styles'
+import { Logo, breakpoints, cores } from '../../styles'
 
 type Props = {
   capa: string
@@ -29,10 +29,23 @@ export const TextContainer = styled.div`
   justify-content: space-between;
   width: 100%;
 
+  @media (max-width: ${breakpoints.desktop}) {
+    flex-direction: column;
+    gap: 8px;
+  }
+
   p {
     width: 200px;
     color: ${cores.primary};
+
+    @media (max-width: ${breakpoints.desktop}) {
+      text-align: center;
+      &:first-child {
+        display: none;
+      }
+    }
   }
+
   ${Logo} {
     margin-top: 0px;
   }
@@ -45,6 +58,10 @@ export const ContainerInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 80%;
+  }
 
   h3 {
     font-size: 32px;

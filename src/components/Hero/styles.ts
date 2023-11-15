@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import background from '../../assets/images/background.png'
-import { Logo, cores } from '../../styles'
+import { Logo, breakpoints, cores } from '../../styles'
 
 export const HeroContainer = styled.header`
   display: flex;
@@ -17,6 +17,11 @@ export const HeroContainer = styled.header`
   ${Logo} {
     margin-top: 24px;
   }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    height: fit-content;
+    gap: 24px;
+  }
 `
 
 export const HeroTitle = styled.h1`
@@ -25,4 +30,8 @@ export const HeroTitle = styled.h1`
   max-width: 540px;
   color: ${cores.primary};
   text-align: center;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    font-size: 24px;
+  }
 `

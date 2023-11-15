@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
@@ -85,6 +85,29 @@ export const ModalContainer = styled.div`
   font-weight: 14px;
   z-index: 1;
 
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 640px;
+    margin-top: 280px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 120px;
+    width: 80%;
+    flex-direction: column;
+    width: 344px;
+    height: fit-content;
+    gap: 8px;
+
+    h3 {
+      text-align: center;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 8px;
+    }
+  }
+
   &.visible {
     display: flex;
   }
@@ -112,6 +135,16 @@ export const ModalContainer = styled.div`
     font-size: 14px;
     line-height: 16px;
     cursor: pointer;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      p {
+        margin: 0;
+      }
+    }
   }
 `
 
@@ -124,6 +157,10 @@ export const ModalDescription = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      height: fit-content;
+    }
   }
 
   img {

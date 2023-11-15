@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { add, openCart } from '../../store/reducers/cart'
 import { useState } from 'react'
 import { Menu } from '../../containers/MenuList'
+import { getDescription } from '../MenuCard'
 
 type Props = {
   foto: string
@@ -15,6 +16,7 @@ type Props = {
   descricao: string
   porcao: string
   cardapio: Menu
+  isModal?: boolean
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -50,7 +52,7 @@ const ProductCard = ({
       <Card>
         <img src={foto} alt="Pizza" />
         <CardTitle>{nome}</CardTitle>
-        <p>{descricao}</p>
+        <p>{getDescription(descricao, 150)}</p>
         <div
           onClick={() => {
             setIsOpen(true)
